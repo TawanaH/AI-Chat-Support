@@ -1,114 +1,48 @@
 "use client";
-
-import { useState } from "react";
-import { Box, Stack, TextField, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 export default function Home() {
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content: `Hi! I'm the Headstarter support assistnat. How can I help you today?`,
-    },
-  ]);
-
-  const sendMessage = async () => {
-    setMessage("");
-    setMessages((messages) => [
-      ...messages,
-      { role: "user", content: message },
-      { role: 'assistant', content: ''}
-    ]);
-    const response = fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify([...messages, { role: "user", content: message }]),
-    }).then(async (res) => {
-      const reader = res.body.getReader()
-      const decoder = new TextDecoder()
-      let result = ''
-      return reader.read().then(function processText({done, value}){
-        if (done) {
-          return result
-        }
-        const text = decoder.decode(value || new Uint8Array(), {stream: true})
-        setMessages((messages) => {
-          let lastMessage = messages[messages.length - 1]
-          let otherMessages = messages.slice(0, messages.length - 1)
-
-          return [...otherMessages, {...lastMessage, content: lastMessage.content + text}]
-        })
-
-        return reader.read().then(processText)
-      })
-    });
-
-  };
-
-  const [message, setMessage] = useState("");
-
   return (
     <Box
-      width="100vw"
-      height="100vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      p={10}
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 10,
+        backgroundImage: "url('background.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      <Stack
-        direction={'column'}
-        width="1000px"
-        height="1000px"
-        border="1px solid black"
-        borderRadius={5}
-        p={2}
-        spacing={3}
+      <Typography
+        variant="h2"
+        color="white"
+        sx={{
+          marginBottom: 2,
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+        }}
       >
-        <Stack
-          direction={'column'}
-          spacing={2}
-          flexGrow={1}
-          overflow="auto"
-          maxHeight="100%"
-        >
-          {messages.map((message, index) => (
-            <Box
-              key={index}
-              display={"flex"}
-              justifyContent={
-                message.role === "assistant" ? "flex-start" : "flex-end"
-              }
-            >
-              <Box
-                bgcolor={
-                  message.role === "assistant"
-                    ? "primary.main"
-                    : "secondary.main"
-                }
-                color={"white"}
-                borderRadius={16}
-                p={3}
-              >
-                {message.content}
-              </Box>
-            </Box>
-          ))}
-        </Stack>
-        <Stack direction={"row"} spacing={2}>
-          <TextField
-            label="Message"
-            fullWidth
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <Button variant="contained" onClick={sendMessage}>
-            Send
-          </Button>
-        </Stack>
-      </Stack>
+        Welcome to AI Chat Bot!
+      </Typography>
+      <Button
+        href="/home"
+        variant="contained"
+        sx={{
+          backgroundColor: "rgba(25, 118, 210, 0.4)",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "rgba(21, 101, 192, 0.4)",
+          },
+          padding: "10px 20px",
+          fontSize: "1.2rem",
+          boxShadow: "0 3px 5px 2px rgba(33, 203, 243, 0.1)",
+        }}
+      >
+        Continue
+      </Button>
     </Box>
   );
 }
