@@ -72,12 +72,11 @@ export default function Home() {
         sx={{
           width: "1000px",
           height: "1000px",
-          border: "1px solid black",
-          borderRadius: 5,
+          borderRadius: 2,
           padding: 2,
           spacing: 3,
           backdropFilter: "blur(15px)",
-          backgroundColor: "rgba(50, 50, 50, 0.25)",
+          backgroundColor: "rgba(255, 255, 255, 0.125)",
         }}
       >
         <Stack
@@ -139,7 +138,7 @@ export default function Home() {
                 },
                 "&.Mui-focused fieldset": {
                   borderColor: "rgba(255, 255, 255, 0.7)", 
-                },
+                }
               },
               "& .MuiInputLabel-root": {
                 color: "white",

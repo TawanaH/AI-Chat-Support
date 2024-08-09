@@ -55,7 +55,8 @@ export default function Signup() {
           maxWidth: 400,
           width: "100%",
           padding: 4,
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          backdropFilter: "blur(15px)",
+          backgroundColor: "rgba(255, 255, 255, 0.125)",
           borderRadius: 2,
         }}
       >
@@ -114,9 +115,18 @@ export default function Signup() {
           />
           <Button
             variant="contained"
-            color="primary"
             onClick={onSubmit}
             fullWidth
+            sx={{
+              backgroundColor: "rgba(25, 118, 210, 0.4)",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "rgba(21, 101, 192, 0.4)",
+              },
+              padding: "10px 20px",
+              fontSize: "1.2rem",
+              boxShadow: "0 3px 5px 2px rgba(33, 203, 243, 0.1)",
+            }}
           >
             Sign Up
           </Button>

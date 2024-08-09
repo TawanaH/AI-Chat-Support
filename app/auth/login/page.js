@@ -11,6 +11,7 @@ import {
   Alert,
 } from "@mui/material";
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from "@/hooks/auth";
+import GoogleIcon from "@mui/icons-material/Google";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -64,7 +65,8 @@ export default function Login() {
           maxWidth: 400,
           width: "100%",
           padding: 4,
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          backdropFilter: "blur(15px)",
+          backgroundColor: "rgba(255, 255, 255, 0.125)",
           borderRadius: 2,
         }}
       >
@@ -118,19 +120,36 @@ export default function Login() {
           />
           <Button
             variant="contained"
-            color="primary"
             onClick={onSubmit}
             fullWidth
+            sx={{
+              backgroundColor: "rgba(25, 118, 210, 0.4)",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "rgba(21, 101, 192, 0.4)",
+              },
+              padding: "10px 20px",
+              fontSize: "1.2rem",
+              boxShadow: "0 3px 5px 2px rgba(33, 203, 243, 0.1)",
+            }}
           >
-            Sign In
+            Sign in
           </Button>
           <Button
-            variant="outlined"
+            variant="contained"
             color="secondary"
             onClick={onGoogleSignIn}
             fullWidth
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textTransform: "none", 
+              padding: "8px 16px", 
+            }}
           >
-            Sign in with Google
+            Sign in with&nbsp;
+            <GoogleIcon style={{ marginLeft: 8, fontSize: 20 }} />
           </Button>
           <Typography variant="body2" sx={{ mt: 2, textAlign: "center" }}>
             Don't have an account?{" "}
