@@ -27,22 +27,47 @@ export default function Home() {
       >
         Welcome to AI Chat Bot!
       </Typography>
-      <Button
-        href="/home"
-        variant="contained"
+
+      <Box
         sx={{
-          backgroundColor: "rgba(25, 118, 210, 0.4)",
-          color: "white",
-          "&:hover": {
-            backgroundColor: "rgba(21, 101, 192, 0.4)",
-          },
-          padding: "10px 20px",
-          fontSize: "1.2rem",
-          boxShadow: "0 3px 5px 2px rgba(33, 203, 243, 0.1)",
+          display: "flex",
         }}
       >
-        Continue
-      </Button>
+        <Button
+          href="/auth/login"
+          variant="contained"
+          sx={{
+            backgroundColor: "rgba(25, 118, 210, 0.4)",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "rgba(21, 101, 192, 0.4)",
+            },
+            padding: "10px 20px",
+            fontSize: "1.2rem",
+            boxShadow: "0 3px 5px 2px rgba(33, 203, 243, 0.1)",
+            marginRight: "5px"
+          }}
+        >
+          Login
+        </Button>
+        <Button
+          href="/auth/signup"
+          variant="contained"
+          sx={{
+            backgroundColor: "rgba(25, 118, 210, 0.4)",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "rgba(21, 101, 192, 0.4)",
+            },
+            padding: "10px 20px",
+            fontSize: "1.2rem",
+            boxShadow: "0 3px 5px 2px rgba(33, 203, 243, 0.1)",
+            marginLeft: "5px"
+          }}
+        >
+          Sign up
+        </Button>
+      </Box>
     </Box>
   );
 }
