@@ -62,7 +62,7 @@ export default function Home() {
         justifyContent: "center",
         alignItems: "center",
         padding: 10,
-        backgroundImage: "url('background.jpg')",
+        backgroundImage: "url('/background.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
