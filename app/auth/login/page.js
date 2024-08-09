@@ -152,7 +152,7 @@ export default function Login() {
             <GoogleIcon style={{ marginLeft: 8, fontSize: 20 }} />
           </Button>
           <Typography variant="body2" sx={{ mt: 2, textAlign: "center" }}>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
               component="button"
               variant="body2"
