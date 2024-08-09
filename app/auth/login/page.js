@@ -20,22 +20,22 @@ export default function Login() {
   const router = useRouter();
 
   const onSubmit = async () => {
-    try {
-      await doSignInWithEmailAndPassword(email, password);
-    } catch (err) {
-      setErrorMessage(err.message);
-    } finally {
-      router.push("/home");
-    }
+    doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        router.push("/home");
+      })
+      .catch((err) => {
+        setErrorMessage(err.message);
+      });
   };
 
   const onGoogleSignIn = () => {
     doSignInWithGoogle()
-      .then((result) => {
+      .then(() => {
         router.push("/home");
       })
-      .catch((error) => {
-        setErrorMessage(error);
+      .catch((err) => {
+        setErrorMessage(err.message);
       });
   };
 

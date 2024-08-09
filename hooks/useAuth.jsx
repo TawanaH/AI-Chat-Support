@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { auth } from "@/app/firebase/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+// import { GoogleAuthProvider } from "firebase/auth";
 
 export function useAuth() {
   const [user, setUser] = useState(null);
@@ -14,7 +14,7 @@ export function useAuth() {
       setLoading(false);
     });
 
-    return () => unsubscribe(); // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
 
   return [user, loading];
