@@ -1,7 +1,9 @@
 "use client";
 
+
 import { useState } from "react";
 import { Box, Stack, TextField, Button } from "@mui/material";
+import Rating from "@/app/test/page"
 
 export default function Home() {
   const [messages, setMessages] = useState([
@@ -53,117 +55,126 @@ export default function Home() {
   const [message, setMessage] = useState("");
 
   return (
-    <Box
-      sx={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 10,
-        backgroundImage: "url('background.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <Stack
-        direction={"column"}
+    <div>
+
+
+      <Box
         sx={{
-          width: "1000px",
-          height: "1000px",
-          border: "1px solid black",
-          borderRadius: 5,
-          padding: 2,
-          spacing: 3,
-          backdropFilter: "blur(15px)",
-          backgroundColor: "rgba(50, 50, 50, 0.25)",
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 10,
+          backgroundImage: "url('background.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
+        
+        <Box>
+          <Rating />
+        </Box>
+        
         <Stack
           direction={"column"}
-          spacing={2}
           sx={{
-            flexGrow: 1,
-            overflow: "auto",
-            maxHeight: "100%",
+            width: "1000px",
+            height: "1000px",
+            border: "1px solid black",
+            borderRadius: 5,
+            padding: 2,
+            spacing: 3,
+            backdropFilter: "blur(15px)",
+            backgroundColor: "rgba(50, 50, 50, 0.25)",
           }}
         >
-          {messages.map((message, index) => (
-            <Box
-              key={index}
-              display={"flex"}
-              justifyContent={
-                message.role === "assistant" ? "flex-start" : "flex-end"
-              }
-            >
-              <Box
-                sx={{
-                  bgcolor:
-                    message.role === "assistant"
-                      ? "rgba(33, 150, 243, 0.4)"
-                      : "rgba(97, 97, 97, 0.4)",
-                  color: "white",
-                  borderRadius: 5,
-                  padding: 3,
-                }}
-              >
-                {message.content}
-              </Box>
-            </Box>
-          ))}
-        </Stack>
-        <Stack direction={"row"} spacing={2}>
-          <TextField
-            label="Message"
-            fullWidth
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            InputProps={{
-              style: {
-                color: "white",
-              },
-            }}
-            InputLabelProps={{
-              style: {
-                color: "white",
-              },
-            }}
+          <Stack
+            direction={"column"}
+            spacing={2}
             sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: "rgba(255, 255, 255, 0.5)", 
-                },
-                "&:hover fieldset": {
-                  borderColor: "rgba(255, 255, 255, 0.7)", 
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: "rgba(255, 255, 255, 0.7)", 
-                },
-              },
-              "& .MuiInputLabel-root": {
-                color: "white",
-              },
-            }}
-          />
-          <Button
-            variant="contained"
-            onClick={sendMessage}
-            sx={{
-              backgroundColor: "rgba(25, 118, 210, 0.4)",
-              color: "white",
-              "&:hover": {
-                backgroundColor: "rgba(21, 101, 192, 0.4)",
-              },
-              padding: "10px 20px",
-              fontSize: "1.2rem",
-              boxShadow: "0 3px 5px 2px rgba(33, 203, 243, 0.1)",
+              flexGrow: 1,
+              overflow: "auto",
+              maxHeight: "100%",
             }}
           >
-            Send
-          </Button>
+            {messages.map((message, index) => (
+              <Box
+                key={index}
+                display={"flex"}
+                justifyContent={
+                  message.role === "assistant" ? "flex-start" : "flex-end"
+                }
+              >
+                <Box
+                  sx={{
+                    bgcolor:
+                      message.role === "assistant"
+                        ? "rgba(33, 150, 243, 0.4)"
+                        : "rgba(97, 97, 97, 0.4)",
+                    color: "white",
+                    borderRadius: 5,
+                    padding: 3,
+                  }}
+                >
+                  {message.content}
+                </Box>
+              </Box>
+            ))}
+          </Stack>
+          <Stack direction={"row"} spacing={2}>
+            <TextField
+              label="Message"
+              fullWidth
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              InputProps={{
+                style: {
+                  color: "white",
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: "white",
+                },
+              }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "rgba(255, 255, 255, 0.5)", 
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "rgba(255, 255, 255, 0.7)", 
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgba(255, 255, 255, 0.7)", 
+                  },
+                },
+                "& .MuiInputLabel-root": {
+                  color: "white",
+                },
+              }}
+            />
+            <Button
+              variant="contained"
+              onClick={sendMessage}
+              sx={{
+                backgroundColor: "rgba(25, 118, 210, 0.4)",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "rgba(21, 101, 192, 0.4)",
+                },
+                padding: "10px 20px",
+                fontSize: "1.2rem",
+                boxShadow: "0 3px 5px 2px rgba(33, 203, 243, 0.1)",
+              }}
+            >
+              Send
+            </Button>
+          </Stack>
         </Stack>
-      </Stack>
-    </Box>
+      </Box>
+    </div>
   );
 }
