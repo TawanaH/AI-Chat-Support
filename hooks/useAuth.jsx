@@ -1,23 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import { auth } from "@/firebase";
-import { onAuthStateChanged, User } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 // import { GoogleAuthProvider } from "firebase/auth";
 
 export function useAuth() {
 	const [user, setUser] = useState(null);
-	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			setUser(currentUser);
-			setLoading(false);
-		});
-
-		return () => unsubscribe();
+		return onAuthStateChanged(auth, (user) => setUser(user));
 	}, []);
 
-	return [user, loading];
+	return user;
 }
 
 //const AuthContext = React.createContext();

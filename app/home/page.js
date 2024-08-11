@@ -9,8 +9,8 @@ import {
 	styled,
 	Container,
 } from "@mui/material";
-import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
+import Page from "../test/page";
 
 const CenteredContainer = styled(Container)(() => ({
 	display: "flex",
@@ -22,14 +22,7 @@ const CenteredContainer = styled(Container)(() => ({
 }));
 
 export default function Home() {
-	const { user, loading } = useAuth();
 	const router = useRouter();
-
-	useEffect(() => {
-		if (!user && !loading) {
-			return router.push("/auth/login");
-		}
-	}, [user, loading, router]);
 
 	const [messages, setMessages] = useState([
 		{
@@ -97,6 +90,10 @@ export default function Home() {
 				backgroundPosition: "center",
 			}}
 		>
+			<Box>
+				<Page />
+			</Box>
+
 			<Stack
 				direction={"column"}
 				sx={{
