@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import Rating from '@/rating'; // Ensure the path is correct
+import Rating from '@/rating';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
