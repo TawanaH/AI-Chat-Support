@@ -4,8 +4,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "AI Chat Bot",
-  description: "Cool AI chat bot.",
+  title: "EchoGPT",
+  description: "Your AI powered personal assistant.",
 };
 
 export default function RootLayout({ children }) {
