@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
@@ -19,28 +19,35 @@ export default function LogoutButton() {
 	};
 
 	return (
-		<AppBar
-			position="static"
-			sx={{ boxShadow: "none", backgroundColor: "transparent" }}
-		>
-			<Toolbar sx={{ justifyContent: "flex-end" }}>
-				{user && (
-					<Button
-						variant="outlined"
-						color="inherit"
-						onClick={handleLogout}
-						startIcon={<LogoutIcon />}
-						sx={{
-							"@media (max-width: 600px)": {
-								minWidth: 0,
-								padding: "8px",
-							},
-						}}
-					>
-						Logout
-					</Button>
-				)}
-			</Toolbar>
-		</AppBar>
+		<>
+			{user && (
+				<Button
+					variant="outlined"
+					onClick={handleLogout}
+					startIcon={<LogoutIcon />}
+					sx={{
+						backgroundColor: "rgba(0, 0, 139, 0.9)",
+
+						"&.MuiButton-outlined": {
+							borderColor: "black",
+							color: "white",
+							borderWidth: "0.5px",
+						},
+						"&.MuiButton-outlined:hover": {
+							backgroundColor: "rgba(10, 0, 90, 0.8)",
+							borderWidth: "0.5px",
+							borderColor: "black",
+						},
+						"@media (max-width: 600px)": {
+							minWidth: 0,
+							padding: "8px",
+							backgroundColor: "rgba(0, 0, 139, 0.6)",
+						},
+					}}
+				>
+					Logout
+				</Button>
+			)}
+		</>
 	);
 }

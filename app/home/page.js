@@ -12,7 +12,7 @@ import {
 import { useRouter } from "next/navigation";
 import Page from "../test/page";
 import { useAuth } from "@/hooks/useAuth";
-import LogoutButton from "../components/LogoutButton";
+import Header from "../components/Header";
 
 const CenteredContainer = styled(Container)(() => ({
 	display: "flex",
@@ -115,6 +115,7 @@ export default function Home() {
 				</Box>
 			) : (
 				<>
+					<Header />
 					<Box
 						sx={{
 							width: "100vw",
@@ -129,7 +130,6 @@ export default function Home() {
 							backgroundPosition: "center",
 						}}
 					>
-						<LogoutButton />
 						<Box
 							sx={{
 								width: "100%",
