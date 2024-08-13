@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import { doCreateUserWithEmailAndPassword } from "@/hooks/auth";
 import { useRouter } from "next/navigation";
+import { collection, addDoc } from "firebase/firestore";
+import { firestore } from "@/firebase";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -24,6 +26,10 @@ export default function Signup() {
     doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
         setMessage("Sign up successful!");
+        addDoc(collection(firestore, "users"), {
+          email: email,
+          password: password
+        })
       })
       .catch((err) => {
         setErrorMessage(err.message);
